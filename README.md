@@ -1,7 +1,7 @@
 # Explore A Topic In VR
 Explore some topics in VR in more depth using Unity and HMD. Demonstrate an interesting, creative, and substantial, contribution to VR software–new interaction techniques, interfaces, toolkit capabilities, and so forth.
 - [Github repo](https://github.com/jordestay/vr) - this will probably be renamed at some point
-- [Overleaf report](https://www.overleaf.com/project/63eef436e5d1a41b2f0436b9) - currently just the ACM template
+- [Overleaf report](https://www.overleaf.com/project/63eef436e5d1a41b2f0436b9) - currently just the ACM template. Send your email on Discord and I'll add you to access the file.
 
 ## Brainstorm
 - interaction menu
