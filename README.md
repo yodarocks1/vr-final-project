@@ -9,15 +9,15 @@ Explore some topics in VR in more depth using Unity and HMD. Demonstrate an inte
 
 ## Milestones
 ### 1. Proposal + literature review (**3/17**)
-	- well-grounded, motivated, and creative project
-	- Access scientific sources free via the [USU library](https://library.usu.edu/), including peer-reviewed conferences such as IEEE VR, ACM ISMAR, ACM UIST, ACM CHI, or others, and journals such as ACM TOCHI and IEEE TVCG
-	- 6pg max report pdf with 8 references in ACM format
+- well-grounded, motivated, and creative project
+- Access scientific sources free via the [USU library](https://library.usu.edu/), including peer-reviewed conferences such as IEEE VR, ACM ISMAR, ACM UIST, ACM CHI, or others, and journals such as ACM TOCHI and IEEE TVCG
+- 6pg max report pdf with 8 references in ACM format
 ### 2. Prototype presentation (**4/6**)
-	-Implement & Write-up
+-Implement & Write-up
 ### 3. Final Presentation (**4/20-25**)
-	- overview of your project’s motivation and implementation, project screen-cast, and lessons learned (7min)
-		- what you did, how successful it was, what problems you faced, and so on
-	- questions (1min)
+- overview of your project’s motivation and implementation, project screen-cast, and lessons learned (7min)
+	- what you did, how successful it was, what problems you faced, and so on
+- questions (1min)
 ### 4. Final Demo + Final report (**4/27-5/3**)
-	- since we will be meeting in VR, it would be awesome if we could share the experience
-	- practice, prepare, clarify, organize, explain motivation
+- since we will be meeting in VR, it would be awesome if we could share the experience
+- practice, prepare, clarify, organize, explain motivation
