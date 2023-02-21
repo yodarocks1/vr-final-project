@@ -5,7 +5,8 @@ Explore some topics in VR in more depth using Unity and HMD. Demonstrate an inte
 
 ## Brainstorm
 - interaction menu
-- (put ideas here)
+- Gravity gun-esque manipulation tool
+    - One-eyed scope? Leaves the other eye for viewing the larger context
 
 ## Milestones
 ### 1. Proposal + literature review (**3/17**)
