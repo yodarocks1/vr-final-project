@@ -4,7 +4,14 @@ Explore some topics in VR in more depth using Unity and HMD. Demonstrate an inte
 - [Overleaf report](https://www.overleaf.com/project/63eef436e5d1a41b2f0436b9) - currently just the ACM template. Send your email on Discord and I'll add you to access the file.
 
 ## Brainstorm
-- interaction menu
+- interaction menu (attatched to non-dominant hand, look to real-world examples)
+	- watch-like informaiton menu
+	- palm information menu (we look at our phones for info and the posture is to look at our open palm)
+- cone casting with sliding scale for width of cone
+- ant-man experience focused on changing the scale of the environment
+- 3d manipulation with two hands (Bimanual)
+- data visualization in 3d (3d representation of a heatmap)
+- scene-in-hand metaphor
 - Gravity gun-esque manipulation tool
     - One-eyed scope? Leaves the other eye for viewing the larger context
 
