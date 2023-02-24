@@ -9,6 +9,7 @@ Explore some topics in VR in more depth using Unity and HMD. Demonstrate an inte
 	- palm information menu (we look at our phones for info and the posture is to look at our open palm)
 - cone casting with sliding scale for width of cone
 - ant-man experience focused on changing the scale of the environment
+- "become the object" travel, jump from object to object. The object you become changes how you interact with the environment
 - 3d manipulation with two hands (Bimanual)
 - data visualization in 3d (3d representation of a heatmap)
 - scene-in-hand metaphor
