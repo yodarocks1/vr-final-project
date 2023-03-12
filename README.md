@@ -4,17 +4,23 @@ Explore some topics in VR in more depth using Unity and HMD. Demonstrate an inte
 - [Overleaf report](https://www.overleaf.com/project/63eef436e5d1a41b2f0436b9) - currently just the ACM template. Send your email on Discord and I'll add you to access the file.
 
 ## Brainstorm
-- interaction menu (attatched to non-dominant hand, look to real-world examples)
-	- watch-like informaiton menu
-	- palm information menu (we look at our phones for info and the posture is to look at our open palm)
+- Mathematical function visualization/interaction in 3D
+- watch-like, radial, wearable, or open palm interaction menu
 - cone casting with sliding scale for width of cone
-- ant-man experience focused on changing the scale of the environment
-- "become the object" travel, jump from object to object. The object you become changes how you interact with the environment
+- ant-man experience (change scale of user in environment)
+- "become the object" travel (jump from obj. to obj. changes how you interact with env.)
 - 3d manipulation with two hands (Bimanual)
-- data visualization in 3d (3d representation of a heatmap)
-- scene-in-hand metaphor
-- Gravity gun-esque manipulation tool
-    - One-eyed scope? Leaves the other eye for viewing the larger context
+- data visualization in 3d (heatmaps)
+- heads-up map "God mode" (digital twin)
+- Gravity gun manipulation tool (one-eyed scope)
+- Hotkeys binded to sign language alphabet (m for messages, w for weather...)
+- UX/UI design: signposts, HUD, see-through world
+- holo-cards
+- shopping experience for real-world objects (clothes)
+- 3rd person game with player info around player
+- vr/ar inspiration from movies
+- pick a problem or experience to recreate or solve with VR
+- wallet interaction for shopping
 
 ## Milestones
 ### 1. Proposal + literature review (**3/17**)
