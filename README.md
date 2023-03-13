@@ -5,21 +5,14 @@ Explore some topics in VR in more depth using Unity and HMD. Demonstrate an inte
 
 ## Brainstorm
 - Mathematical function visualization/interaction in 3D
-- watch-like, radial, wearable, or open palm interaction menu
-- cone casting with sliding scale for width of cone
+- interaction menu (watch, palm, radial)
+- cone casting
 - ant-man experience (change scale of user in environment)
 - "become the object" travel (jump from obj. to obj. changes how you interact with env.)
-- 3d manipulation with two hands (Bimanual)
-- data visualization in 3d (heatmaps)
-- heads-up map "God mode" (digital twin)
+- god mode interaction
 - Gravity gun manipulation tool (one-eyed scope)
 - Hotkeys binded to sign language alphabet (m for messages, w for weather...)
-- UX/UI design: signposts, HUD, see-through world
 - holo-cards
-- shopping experience for real-world objects (clothes)
-- 3rd person game with player info around player
-- vr/ar inspiration from movies
-- pick a problem or experience to recreate or solve with VR
 - wallet interaction for shopping
 
 ## Milestones
