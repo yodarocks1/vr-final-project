@@ -33,20 +33,20 @@ public class HandModel : MonoBehaviour
         }
         else
         {
-            targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
+            //targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
             
-            if (primaryButtonValue)
-                Debug.Log("Pressing Primary Button");
+            //if (primaryButtonValue)
+            //    Debug.Log("Pressing Primary Button");
             
-            targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
+            //targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
 
-            if (triggerValue > 0.1)
-                Debug.Log("Trigger pressed " + triggerValue);
+            //if (triggerValue > 0.1)
+            //    Debug.Log("Trigger pressed " + triggerValue);
 
-            targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 primary2DAxisValue);
+            //targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 primary2DAxisValue);
 
-            if (primary2DAxisValue != Vector2.zero)
-                Debug.Log("Primary Thumb Stick " + primary2DAxisValue);
+            //if (primary2DAxisValue != Vector2.zero)
+            //    Debug.Log("Primary Thumb Stick " + primary2DAxisValue);
 
             if(showController)
             {
@@ -59,7 +59,6 @@ public class HandModel : MonoBehaviour
                 spawnedController.SetActive(false);
                 UpdateAnimator();
             }
-
         }
     }
 
@@ -68,9 +67,6 @@ public class HandModel : MonoBehaviour
         List<InputDevice> devices = new List<InputDevice>();
         InputDevices.GetDevices(devices);
 
-/*        InputDeviceCharacteristics rightControllerCharacteristics =
-            InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-*/
         InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
 
         if(devices.Count > 0)
@@ -78,16 +74,15 @@ public class HandModel : MonoBehaviour
             isValid = true;
             foreach (var item in devices)
             {
-                Debug.Log(item.name + ", " + item.characteristics);
-
+                Debug.Log("Hand Model Script: " + item.name + ", " + item.characteristics);
             }
             targetDevice = devices[0];
             spawnedController = Instantiate(controllerPrefab, transform);
             spawnedHandModel = Instantiate(handModelPrefab, transform);
             handAnimator = spawnedHandModel.GetComponent<Animator>();
-
         }
     }
+
     void UpdateAnimator()
     {
         if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
