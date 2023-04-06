@@ -6,5 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes: []
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 23a95ae2d134fbb4e9f3d94ffaafc13e, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 21509c1d625cc9145a1bcbb5fb41c2cd, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: f9cdaa29f71908a47ac99f458acfb950, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: dd1bf1853e3d90d44a539264edcca8b4, type: 2}
