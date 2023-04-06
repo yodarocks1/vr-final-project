@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,105 +7,144 @@ using UnityEngine.XR;
 
 public class HandModel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private bool isValid = false;
+    public InputDeviceCharacteristics ControllerCharacteristics;
     private InputDevice targetDevice;
-    public GameObject controllerPrefab;
-    private GameObject spawnedController;
-    public InputDeviceCharacteristics controllerCharacteristics;
 
-    public GameObject handModelPrefab;
-    private GameObject spawnedHandModel;
-    public bool showController = false;
+    public GameObject ControllerPrefab;
+    private ControllerView controller;
 
-    private Animator handAnimator;
+    public GameObject HandModelPrefab;
+    private ControllerView hand;
 
     void Start()
     {
-        getDevices();
+        GetDevices();
     }
 
-    // Update is called once per frame
+    private readonly InputData inputs = new();
     void Update()
     {
         if(!targetDevice.isValid)
         {
-             getDevices();
+            GetDevices();
         }
         else
         {
-            targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
-            
-            if (primaryButtonValue)
-                Debug.Log("Pressing Primary Button");
-            
-            targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
-
-            if (triggerValue > 0.1)
-                Debug.Log("Trigger pressed " + triggerValue);
-
-            targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 primary2DAxisValue);
-
-            if (primary2DAxisValue != Vector2.zero)
-                Debug.Log("Primary Thumb Stick " + primary2DAxisValue);
-
-            if(showController)
-            {
-                spawnedHandModel.SetActive(false);
-                spawnedController.SetActive(true);
-            }
-            else
-            {
-                spawnedHandModel.SetActive(true);
-                spawnedController.SetActive(false);
-                UpdateAnimator();
-            }
-
+            controller.Show = true;
+            //if (targetDevice.TryGetFeatureValue(CommonUsages.userPresence, out bool userPresent))
+            //{
+            //    controller.Show = !userPresent;
+            //    hand.Show = userPresent;
+            //}
+            inputs.Update(targetDevice);
+            controller.UpdateAnimator(inputs);
+            //hand.UpdateAnimator(inputs);
         }
     }
 
-    void getDevices()
+    void GetDevices()
     {
-        List<InputDevice> devices = new List<InputDevice>();
+        List<InputDevice> devices = new();
         InputDevices.GetDevices(devices);
-
-/*        InputDeviceCharacteristics rightControllerCharacteristics =
-            InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
-*/
-        InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
+        InputDevices.GetDevicesWithCharacteristics(ControllerCharacteristics, devices);
 
         if(devices.Count > 0)
         {
-            isValid = true;
             foreach (var item in devices)
             {
                 Debug.Log(item.name + ", " + item.characteristics);
-
             }
             targetDevice = devices[0];
-            spawnedController = Instantiate(controllerPrefab, transform);
-            spawnedHandModel = Instantiate(handModelPrefab, transform);
-            handAnimator = spawnedHandModel.GetComponent<Animator>();
-
+            GameObject controllerInstance = Instantiate(ControllerPrefab, transform);
+            //GameObject handInstance = Instantiate(HandModelPrefab, transform);
+            controller = new ControllerView(controllerInstance, controllerInstance.GetComponent<Animator>());
+            //hand = new ControllerView(handInstance, handInstance.GetComponent<Animator>());
         }
     }
-    void UpdateAnimator()
+
+    private class InputData
     {
-        if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+        public float Trigger;
+        public float Grip;
+
+        public Vector2 Joystick;
+        public bool JoystickTouch;
+        public bool JoystickClick;
+
+        public bool PrimaryButton;
+        public bool PrimaryButtonTouch;
+
+        public bool SecondaryButton;
+        public bool SecondaryButtonTouch;
+
+        public bool MenuButton;
+
+        public void Update(InputDevice device)
         {
-            handAnimator.SetFloat("Trigger", triggerValue);
+            device.TryGetFeatureValue(CommonUsages.trigger, out Trigger);
+            device.TryGetFeatureValue(CommonUsages.grip, out Grip);
+
+            if (!device.TryGetFeatureValue(CommonUsages.primary2DAxis, out Joystick))
+                device.TryGetFeatureValue(CommonUsages.secondary2DAxis, out Joystick);
+            if (!device.TryGetFeatureValue(CommonUsages.primary2DAxisTouch, out JoystickTouch))
+                device.TryGetFeatureValue(CommonUsages.secondary2DAxisTouch, out JoystickTouch);
+            if (!device.TryGetFeatureValue(CommonUsages.primary2DAxisClick, out JoystickClick))
+                device.TryGetFeatureValue(CommonUsages.secondary2DAxisClick, out JoystickClick);
+
+            device.TryGetFeatureValue(CommonUsages.primaryButton, out PrimaryButton);
+            device.TryGetFeatureValue(CommonUsages.primaryTouch, out PrimaryButtonTouch);
+
+            device.TryGetFeatureValue(CommonUsages.secondaryButton, out SecondaryButton);
+            device.TryGetFeatureValue(CommonUsages.secondaryTouch, out SecondaryButtonTouch);
+
+            device.TryGetFeatureValue(CommonUsages.menuButton, out MenuButton);
         }
-        else
+    }
+
+    private class ControllerView
+    {
+        public GameObject Instance;
+        public Animator Animator;
+        private bool _show = true;
+        public bool Show
         {
-            handAnimator.SetFloat("Trigger", 0);
+            get => _show;
+            set
+            {
+                if (_show != value)
+                {
+                    _show = value;
+                    Instance.SetActive(value);
+                }
+            }
         }
-        if(targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
+
+        public ControllerView(GameObject instance, Animator animator)
         {
-            handAnimator.SetFloat("Grip", gripValue);
+            Instance = instance;
+            Animator = animator;
         }
-        else
+
+        public void UpdateAnimator(InputData inputs)
         {
-            handAnimator.SetFloat("Grip", 0);
+            if (Show)
+            {
+                Animator.SetFloat("Trigger", inputs.Trigger);
+                Animator.SetFloat("Grip", inputs.Grip);
+
+                Animator.SetFloat("Joystick X", inputs.Joystick.x);
+                Animator.SetFloat("Joystick Y", inputs.Joystick.y);
+                Animator.SetBool("Joystick Touch", inputs.JoystickTouch);
+                Animator.SetBool("Joystick Click", inputs.JoystickClick);
+
+                Animator.SetBool("Button 1", inputs.PrimaryButton);
+                Animator.SetBool("Button 1 Touch", inputs.PrimaryButtonTouch);
+
+                Animator.SetBool("Button 2", inputs.SecondaryButton);
+                Animator.SetBool("Button 2 Touch", inputs.SecondaryButtonTouch);
+
+                Animator.SetBool("Button 3", inputs.MenuButton);
+            }
         }
     }
 }

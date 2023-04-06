@@ -2154,7 +2154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ControllerCharacteristics: 576
   ControllerPrefab: {fileID: 8251373501978113715, guid: d8dba8073bcb5344c84bc82d01e155ea, type: 3}
-  HandModelPrefab: {fileID: 4362056292658425664, guid: 1cdf566e21d072047964d0e47d491553, type: 3}
+  HandModelPrefab: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
 --- !u!1 &2026357177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,4 +2436,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ControllerCharacteristics: 320
   ControllerPrefab: {fileID: 572724214471302941, guid: 67a180f8731db8b4f8699cf7b505196d, type: 3}
-  HandModelPrefab: {fileID: 1240189188005411583, guid: ea3322c7fbb87c741b0c6c5328d36019, type: 3}
+  HandModelPrefab: {fileID: 109434732395284509, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
