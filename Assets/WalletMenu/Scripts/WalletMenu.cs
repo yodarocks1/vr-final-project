@@ -12,6 +12,7 @@ public class WalletMenu : MonoBehaviour
     public int CardsSelectedAtPosition = 1;
     public bool AutoSelect = true;
     public AudioClip SelectionSound;
+    [Range(0, 1)] public float SelectionSoundVolume = 0.8f;
 
     [Header("Internal")]
     public GameObject BoxPrefab;
@@ -212,7 +213,8 @@ public class WalletMenu : MonoBehaviour
     public void PlaySelectedAudio()
     {
         AudioSource.PlayClipAtPoint(SelectionSound,
-            transform.localToWorldMatrix.MultiplyPoint(new Vector3(0, (float)GetOffset(Cards.IndexOf(Selected)), 0)));
+            transform.localToWorldMatrix.MultiplyPoint(new Vector3(0, (float)GetOffset(Cards.IndexOf(Selected)), 0)),
+            SelectionSoundVolume);
     }
 
     public class CardChangeEventArgs : EventArgs
