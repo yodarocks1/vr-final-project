@@ -69,7 +69,7 @@ public class XRWalletScroll : MonoBehaviour
             else if (Friction > 0) scrollVelocity = Mathf.MoveTowards(scrollVelocity, 0, Friction * Time.fixedDeltaTime);
             else scrollVelocity = 0;
 
-            if (WhenSelecting) selector.PlayAudio = !grippedLocation.HasValue;
+            if (WhenSelecting) selector.PlayAudio = !grippedLocation.HasValue && !gripButton;
 
             if (ScrollMethod.HasFlag(ScrollingMethod.Grab) && (!WhenSelecting || selector.HasSelection))
             {

@@ -141,4 +141,17 @@ public class WalletCreation : EditorWindow
             Selection.activeObject = controller;
         });
     }
+
+    [MenuItem("CONTEXT/XRController/Handle Wallet Grabbing")]
+    static void CreateWalletMenuGrabber(MenuCommand menuCommand)
+    {
+        AskForObjectOfType<XRWalletProvider>(null, item =>
+        {
+            XRController controller = menuCommand.context as XRController;
+            XRWalletProvider provider = item as XRWalletProvider;
+            XRWalletGrabber scroller = controller.gameObject.AddComponent<XRWalletGrabber>();
+            scroller.WalletProvider = provider;
+            Selection.activeObject = controller;
+        });
+    }
 }

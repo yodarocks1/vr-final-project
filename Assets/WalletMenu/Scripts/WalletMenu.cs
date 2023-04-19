@@ -217,6 +217,11 @@ public class WalletMenu : MonoBehaviour
             SelectionSoundVolume);
     }
 
+    public GameObject Grab(Card card, Transform parent)
+    {
+        return card.Grab(parent);
+    }
+
     public class CardChangeEventArgs : EventArgs
     {
         public Card newCard;

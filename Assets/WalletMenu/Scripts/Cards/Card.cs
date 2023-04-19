@@ -3,6 +3,9 @@ using UnityEngine;
 
 public abstract class Card : MonoBehaviour
 {
+    public GameObject GrabbedPrefab = null;
+    public GameObject GrabbedInstance = null;
+
     private float _visibility = 0f;
     public float Visibility
     {
@@ -121,5 +124,23 @@ public abstract class Card : MonoBehaviour
         Position = parent.Cards.IndexOf(this);
         Visibility = parent.GetVisibility(Position);
         Offset = parent.GetOffset(Position);
+    }
+
+    protected virtual GameObject GetDefaultGrabObject()
+    {
+        GameObject go = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        go.transform.localPosition = Vector3.zero;
+        return go;
+    }
+
+    public GameObject Grab(Transform parent)
+    {
+        GameObject go;
+        if (GrabbedInstance != null) go = GrabbedInstance;
+        else if (GrabbedPrefab == null) go = GetDefaultGrabObject();
+        else go = Instantiate(GrabbedPrefab);
+        GrabbedInstance = go;
+        go.transform.SetParent(parent, false);
+        return go;
     }
 }

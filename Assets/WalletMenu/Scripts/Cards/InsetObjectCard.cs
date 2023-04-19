@@ -24,6 +24,7 @@ public class InsetObjectCard : InsetCard
         if (instance == null)
         {
             instance = Instantiate(PrefabData.Prefab, boxInstance.transform);
+            instance.SetActive(true);
             PrefabData.Apply(instance.transform);
             SetCardShaderAllChildren(instance.transform);
         }
